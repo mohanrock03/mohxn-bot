@@ -22,6 +22,16 @@ app = FastAPI(title="MOHXN VIP PREDICTION ENGINE")
 def get_rnd32():
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=32))
 
+def get_issue_num_int(issue):
+    try:
+        return int(str(issue).strip())
+    except:
+        try:
+            # Handle possible scientific notation or truncated strings
+            return int(float(issue))
+        except:
+            return 0
+
 def get_api_signature(params):
     excl = ['signature', 'track', 'xosoBettingData', 'timestamp']
     filtered = {k: params[k] for k in sorted(params.keys()) if k not in excl and params[k] is not None and params[k] != ''}
@@ -241,6 +251,7 @@ def predict_next(history: List[Dict], client_state: Dict = None) -> Dict:
         else:
             state_msg = f"{current_strat} sequence active"
 
+    reason = pattern_info['reason'] if pattern_info else "No strong pattern detected"
     if not current_strat:
         return {"period": str(next_issue), "move": "SKIP", "priority": 0, "psychology": reason, "state": {}}
 
