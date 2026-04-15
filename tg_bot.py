@@ -3,6 +3,7 @@ import time
 import threading
 import logging
 import requests
+import cloudscraper
 from flask import Flask
 from backend import post_api, predict_next, get_issue_num_int
 
@@ -68,14 +69,22 @@ def run_loop():
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
             }
             
-            res = requests.post("https://api.jalwaapi.com/api/webapi/GetNoaverageEmerdList", json=payload, headers=headers, timeout=15)
+            scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'android', 'mobile': True})
+            res = scraper.post("https://api.jalwaapi.com/api/webapi/GetNoaverageEmerdList", json=payload, headers=headers, timeout=15)
             
             if res.status_code == 401:
                 logger.error("❌ Invalid JWT Auth Token! Please update it.")
                 time.sleep(30)
                 continue
                 
-            data = res.json()
+            try:
+                data = res.json()
+            except Exception as json_err:
+                logger.error(f"❌ JSON Decode Error (Status {res.status_code}):")
+                logger.error(f"Response snippet: {res.text[:200]}")
+                time.sleep(15)
+                continue
+
             if data.get('code') != 0 or 'list' not in data.get('data', {}):
                 logger.warning(f"⚠️ Bad Jalwa response: {data}")
                 time.sleep(10)
