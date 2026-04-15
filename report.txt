@@ -1,0 +1,72 @@
+
+=============================
+[30 Second Timeframe]
+200 Days Market Data (576000 Rounds)
+=============================
+Engine Accuracy (under 5 Levels) : 96.88%
+Total Betting Cycles      : 220866
+Successful Cycles         : 213976
+Failed Cycles (Hit >L5)   : 6889 (Total Ruin)
+Low Vector Skips          : 147888
+
+[Win Distribution by Level]
+L1 Wins: 111534
+L2 Wins: 53536
+L3 Wins: 27609
+L4 Wins: 14273
+L5 Wins: 7024
+-----------------------------
+
+=============================
+[1 Minute Timeframe]
+200 Days Market Data (288000 Rounds)
+=============================
+Engine Accuracy (under 5 Levels) : 96.81%
+Total Betting Cycles      : 110549
+Successful Cycles         : 107025
+Failed Cycles (Hit >L5)   : 3523 (Total Ruin)
+Low Vector Skips          : 73995
+
+[Win Distribution by Level]
+L1 Wins: 55891
+L2 Wins: 26947
+L3 Wins: 13625
+L4 Wins: 7102
+L5 Wins: 3460
+-----------------------------
+
+=============================
+[3 Minute Timeframe]
+200 Days Market Data (96000 Rounds)
+=============================
+Engine Accuracy (under 5 Levels) : 96.93%
+Total Betting Cycles      : 37028
+Successful Cycles         : 35890
+Failed Cycles (Hit >L5)   : 1137 (Total Ruin)
+Low Vector Skips          : 24386
+
+[Win Distribution by Level]
+L1 Wins: 18776
+L2 Wins: 8983
+L3 Wins: 4593
+L4 Wins: 2303
+L5 Wins: 1235
+-----------------------------
+
+=============================
+[5 Minute Timeframe]
+200 Days Market Data (57600 Rounds)
+=============================
+Engine Accuracy (under 5 Levels) : 97.00%
+Total Betting Cycles      : 22164
+Successful Cycles         : 21498
+Failed Cycles (Hit >L5)   : 666 (Total Ruin)
+Low Vector Skips          : 14865
+
+[Win Distribution by Level]
+L1 Wins: 11276
+L2 Wins: 5371
+L3 Wins: 2762
+L4 Wins: 1364
+L5 Wins: 725
+-----------------------------

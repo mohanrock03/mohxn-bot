@@ -1,0 +1,33 @@
+       path: Z1
+        })
+    },
+    x0 = L1.create(Iq);
+x0.interceptors.request.use(e => {
+    var k;
+    const s = d1(),
+        n = s.getToken;
+    e.data.language = i2(), e.data.random = NQ();
+    const i = JSON.parse(JSON.stringify(e.data)),
+        r = Object.keys(i);
+    r.sort();
+    const p = {},
+        g = ["signature", "track", "xosoBettingData"];
+    r.forEach(v => {
+        i[v] !== null && i[v] !== "" && !g.includes(v) && (p[v] = i[v] === 0 ? 0 : i[v])
+    }), e.data.signature = qQ(JSON.stringify(p)), e.data.timestamp = Math.floor(Date.now() / 1e3);
+    const A = localStorage.getItem("tokenHeader") || "",
+        d = localStorage.getItem("refreshToken") || "",
+        w = e.data;
+    s.setReqData(w);
+    const u = S0(),
+        {
+            getCacheValue: h
+        } = u;
+    if (e.params && e.params.cache) {
+        const v = Q1(e),
+            I = h(v);
+        if (I) return Promise.reject({ ...I,
+            cache: !0
+        })
+    }
+    return Bq(e), Sq(e), { ...e

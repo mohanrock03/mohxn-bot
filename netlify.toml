@@ -1,0 +1,14 @@
+[build]
+  publish = "static"
+  functions = "api"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/index/:splat"
+  status = 200
+
+# Optional: Handle SPA-like routing if you add more pages
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,16 @@
+{
+  "name": "mohxn_premium_prediction",
+  "short_name": "mohxn_premium_prediction",
+  "description": "MOHXN PREMIUM Prediction Engine",
+  "start_url": "/?v=3.6",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0B0F19">
+    <meta name="description" content="MOHXN VIP — Strong Pattern Prediction Engine">
+    <title>MOHXN VIP — Pattern Engine</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css?v=7.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <h1>MOHXN<span class="accent">VIP</span></h1>
+            </div>
+            <div class="header-right">
+                <div class="status-badge" id="statusBadge">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusLabel">OFFLINE</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main class="scroll-content" id="mainContent">
+
+            <!-- Oracle Prediction Card -->
+            <div class="oracle-card" id="oracleCard">
+                <div class="oracle-header">
+                    <div class="oracle-title">
+                        <span class="oracle-icon">⚡</span>
+                        <span>PATTERN ENGINE</span>
+                    </div>
+                    <div class="oracle-badge" id="oracleStatusBadge">IDLE</div>
+                </div>
+
+                <div class="oracle-period-row">
+                    <div class="oracle-period-item">
+                        <span class="opl">TARGET PERIOD</span>
+                        <span class="opv" id="oracleTargetPeriod">---</span>
+                    </div>
+                    <div class="oracle-period-item">
+                        <span class="opl">STRONG PATTERN</span>
+                        <span class="opv pattern-label" id="oracleActivePattern">NONE</span>
+                    </div>
+                    <div class="oracle-period-item">
+                        <span class="opl">ROUND</span>
+                        <span class="opv signal-type-color" id="oracleCycleRound">--</span>
+                    </div>
+                </div>
+
+                <div class="oracle-period-row secondary-row">
+                    <div class="oracle-period-item">
+                        <span class="opl">DETECTION RANGE</span>
+                        <span class="opv" id="oracleDetectionRange">---</span>
+                    </div>
+                    <div class="oracle-period-item">
+                        <span class="opl">CONFIDENCE</span>
+                        <span class="opv" id="oracleConfidence">0%</span>
+                    </div>
+                </div>
+
+                <!-- Signal Display -->
+                <div class="oracle-signal-box">
+                    <div class="oracle-signal-label">PREDICTED MOVE</div>
+                    <div class="oracle-signal-value" id="oracleSignal">--</div>
+                </div>
+
+                <!-- Trap Type -->
+                <div class="oracle-trap">
+                    <div class="oracle-trap-label">CONDITION</div>
+                    <div class="oracle-trap-text" id="oracleTrapType">Awaiting data...</div>
+                </div>
+
+                <!-- Sentiment -->
+                <div class="oracle-sentiment">
+                    <div class="oracle-sentiment-label">STATUS</div>
+                    <div class="oracle-sentiment-text" id="oracleSentiment">Awaiting data stream...</div>
+                </div>
+
+                <!-- Priority Bar -->
+                <div class="priority-section">
+                    <div class="priority-header">
+                        <span>PATTERN STRENGTH</span>
+                        <span class="priority-value" id="priorityValue">0</span>
+                    </div>
+                    <div class="priority-bar-track">
+                        <div class="priority-bar-fill" id="priorityBarFill" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Session Tracker -->
+            <div class="tracker-card" id="trackerCard">
+                <div class="tracker-header">
+                    <h3>📊 SESSION TRACKER</h3>
+                    <button class="tracker-reset-btn" id="resetTrackerBtn">RESET</button>
+                </div>
+                <div class="tracker-stats">
+                    <div class="tracker-stat win-stat">
+                        <div class="tracker-stat-value" id="statWins">0</div>
+                        <div class="tracker-stat-label">WINS</div>
+                    </div>
+                    <div class="tracker-stat loss-stat">
+                        <div class="tracker-stat-value" id="statLosses">0</div>
+                        <div class="tracker-stat-label">LOSSES</div>
+                    </div>
+                    <div class="tracker-stat rate-stat">
+                        <div class="tracker-stat-value" id="statWinRate">--</div>
+                        <div class="tracker-stat-label">WIN%</div>
+                    </div>
+                    <div class="tracker-stat streak-stat">
+                        <div class="tracker-stat-value" id="statStreak">0</div>
+                        <div class="tracker-stat-label">STREAK</div>
+                    </div>
+                </div>
+                <!-- Recent results mini-feed -->
+                <div class="tracker-feed" id="trackerFeed"></div>
+            </div>
+
+            <!-- Result History -->
+            <div class="history-card" id="historyCard">
+                <div class="history-header">
+                    <h3>📋 RECENT RESULTS</h3>
+                </div>
+                <div class="history-grid" id="historyGrid">
+                    <div class="history-empty">Start monitoring to see results...</div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Nav -->
+        <nav class="bottom-nav">
+            <div class="bottom-top-row">
+                <div class="tf-selector">
+                    <button class="nav-btn" data-tf="30s">30S</button>
+                    <button class="nav-btn active" data-tf="1m">1M</button>
+                    <button class="nav-btn" data-tf="3m">3M</button>
+                    <button class="nav-btn" data-tf="5m">5M</button>
+                </div>
+            </div>
+            <div class="bottom-action-row notify-row">
+                <button class="notify-btn" id="notifyToggleBtn">🔔 ENABLE NOTIFICATIONS</button>
+            </div>
+            <div class="bottom-action-row token-row">
+                <input type="password" id="jwtTokenInput" class="jwt-input" placeholder="Paste Jalwa JWT Token..." />
+                <button class="jwt-set-btn" id="setTokenBtn">SET</button>
+            </div>
+            <div class="bottom-action-row token-row" style="margin-top: 5px;">
+                <input type="text" id="tgChatIdInput" class="jwt-input" style="width:40%;" placeholder="TG Chat ID" />
+                <input type="password" id="tgTokenInput" class="jwt-input" style="width:45%; margin-left: 5px;" placeholder="TG Bot Token" />
+                <button class="jwt-set-btn" id="setTgBtn" style="margin-left: 5px; width:15%;">SET</button>
+            </div>
+            <!-- Status message area to replace old button -->
+            <div class="bottom-action-row" id="monitorStatusRow" style="display:none; padding-top: 10px;">
+                <button class="monitor-btn" id="monitorBtn">
+                    <span class="mon-btn-icon">▶</span>
+                    <span class="mon-btn-text">START MONITORING</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/md5.min.js"></script>
+    <script src="app.js?v=7.0"></script>
+</body>
+</html>

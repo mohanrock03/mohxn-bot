@@ -1,0 +1,90 @@
+ }
+    return {
+        location: r,
+        state: i,
+        push: a,
+        replace: o
+    }
+}
+
+function qQ(t) {
+    t = UQ(t);
+    const e = KQ(t),
+        n = XQ(t, e.state, e.location, e.replace);
+
+    function r(s, o = !0) {
+        o || n.pauseListeners(), history.go(s)
+    }
+    const i = nt({
+        location: "",
+        base: t,
+        go: r,
+        createHref: HQ.bind(null, t)
+    }, e, n);
+    return Object.defineProperty(i, "location", {
+        enumerable: !0,
+        get: () => e.location.value
+    }), Object.defineProperty(i, "state", {
+        enumerable: !0,
+        get: () => e.state.value
+    }), i
+}
+
+function abe(t) {
+    return t = location.host ? t || location.pathname + location.search : "", t.includes("#") || (t += "#"), !t.endsWith("#/") && !t.endsWith("#") && je(`A hash base must end with a "#":
+"${t}" should be "${t.replace(/#.*$/,"#")}".`), qQ(t)
+}
+
+function JQ(t) {
+    return typeof t == "string" || t && typeof t == "object"
+}
+
+function wM(t) {
+    return typeof t == "string" || typeof t == "symbol"
+}
+const is = {
+        path: "/",
+        name: void 0,
+        params: {},
+        query: {},
+        hash: "",
+        fullPath: "/",
+        matched: [],
+        meta: {},
+        redirectedFrom: void 0
+    },
+    EM = Symbol("navigation failure");
+var y1;
+(function(t) {
+    t[t.aborted = 4] = "aborted", t[t.cancelled = 8] = "cancelled", t[t.duplicated = 16] = "duplicated"
+})(y1 || (y1 = {}));
+const ZQ = {
+    1({
+        location: t,
+        currentLocation: e
+    }) {
+        return `No match for
+ ${JSON.stringify(t)}${e?`
+while being at
+`+JSON.stringify(e):""}`
+    },
+    2({
+        from: t,
+        to: e
+    }) {
+        return `Redirected from "${t.fullPath}" to "${eee(e)}" via a navigation guard.`
+    },
+    4({
+        from: t,
+        to: e
+    }) {
+        return `Navigation aborted from "${t.fullPath}" to "${e.fullPath}" via a navigation guard.`
+    },
+    8({
+        from: t,
+        to: e
+    }) {
+        return `Navigation cancelled from "${t.fullPath}" to "${e.fullPath}" with a new navigation.`
+    },
+    16({
+      
